@@ -1,1 +1,116 @@
-20.11
+internal class Osoba
+{
+    private string _imie;
+    private string _nazwisko;
+    private Adres _adres {get; set;}
+
+    public string Imie
+    {
+        get { return _imie; }
+        set { _imie = value; }
+    }
+    public string Nazwisko
+    {
+        get { return _nazwisko; }
+        set { _nazwisko = value; }
+    }
+
+    public string PrzedstawSie()
+    {
+        return $"nazywam sie {Imie} {Nazwisko}. adres zamieszkania:{_adres.AdresPocztowy}";
+    }
+    public void UstawDane(string imie, string nazwisko, Adres adres)
+    {
+        this.Imie = imie;    
+        this._nazwisko = nazwisko;
+        this._adres = adres;
+    }
+    public class Adres
+    {
+
+
+    }
+}
+    internal class Adres
+    {
+        private string _ulica;
+        private string _nrDomu;
+        private string _nrMieszkania;
+        private string _kod;
+        private string _miasto;
+        private string _panstwo;
+
+        public string Ulica
+        {
+            get { return _ulica; }
+            set { _ulica = value; }
+        }
+        public string NrDomu
+        {
+            get { return _nrDomu; }
+            set { _nrDomu = value; }
+        }
+        public string NrMieszkania
+        {
+            get { return _nrMieszkania; }
+            set { _nrMieszkania = value; }
+        }
+        public string Kod
+        {
+            get { return _kod; }
+            set { _kod = value; }
+        }
+        public string Miasto
+        {
+            get { return _miasto; }
+            set { _miasto = value; }
+        }
+        public string Panstwo
+        {
+            get { return _panstwo; }
+            set { _panstwo = value; }
+        }
+
+        public string AdresPocztowy 
+        {
+        
+            get{
+                return $"ul. {Ulica} {NrDomu}/ {NrMieszkania}\n {Kod}\n {Miasto}\n {Panstwo}";
+
+            }
+        
+        
+        }
+
+
+
+
+        public string PodajAdres()
+
+        {
+
+            return "ul" + this._ulica + this._nrDomu;
+        }
+    }
+}
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        Osoba osoba = new Osoba();
+        //osoba.Imie = "Riko";
+        //osoba.Nazwisko = "Witczak";
+        //Console.WriteLine("nazywam sie" +osoba.Imie +"  "+ osoba.Nazwisko);
+        
+        Console.WriteLine(osoba.PrzedstawSie());
+
+        osoba.UstawDane("Kacper", "Kurek");
+        Console.WriteLine(osoba.PrzedstawSie());
+        osoba.Imie = ("Riko");
+        osoba.Nazwisko = "Witczak";
+        Console.WriteLine(osoba.Imie);
+        Console.WriteLine(osoba.Nazwisko);
+        Console.WriteLine(osoba.PrzedstawSie());
+
+    }
+}
